@@ -17,12 +17,12 @@ const UserSchema = new Schema({
     firstName: {
         type: String,
         required: [true, 'firstname is required'],
-        unique: true
+
     },
     lastName: {
         type: String,
         required: [true, 'lastName is required'],
-        unique: true
+
     },
     username: {
         type: String,
@@ -44,3 +44,7 @@ const UserSchema = new Schema({
     followers: [followSchema],
     following: [followSchema]
 })
+
+const User = mongoose.model('User', UserSchema);
+
+module.exports = { User }
