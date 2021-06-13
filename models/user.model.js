@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const followSchema = new Schema({
     _id: {
         type: Schema.Types.ObjectId,
-
     },
     user: {
         type: Schema.Types.ObjectId,

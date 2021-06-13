@@ -38,4 +38,8 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = { signup, login }
+const follow = async (req, res) => {
+
+}
+
+module.exports = { signup, login, follow }
