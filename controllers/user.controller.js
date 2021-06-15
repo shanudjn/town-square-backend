@@ -26,8 +26,9 @@ const login = async (req, res) => {
         if (user) {
             const validPassword = await bcrypt.compare(password, user.password);
             if (validPassword) {
-                const token = jwt.sign({ userId: user._id }, secret, { expiresIn: '24h' })
-                return res.status(200).json({ success: true, message: "Login Successfull", username, token })
+                const token = jwt.sign({ userId: user._id, username: user.username }, secret, { expiresIn: '24h' })
+                const userId = user._id
+                return res.status(200).json({ success: true, message: "Login Successfull", username, userId, token })
             }
         }
         res.status(400).json({ success: false, message: "User not registered", });
@@ -39,6 +40,13 @@ const login = async (req, res) => {
 }
 
 const follow = async (req, res) => {
+    // const { userId } = req.user;
+    // const { username } = req.body;
+
+    // const userToFollow = await User.find({ username: username });
+    // userToFollow.followers.push()
+
+
 
 }
 

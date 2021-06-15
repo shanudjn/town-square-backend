@@ -6,10 +6,10 @@ const secret = process.env['SECRET'];
 function authenticationVerifier(req, res, next) {
     const bearerToken = req.headers.authorization;
     const token = bearerToken.split(' ')[1]
-    console.log(token)
+
     try {
         const decodedToken = jwt.verify(token, secret);
-        req.user = { userId: decodedToken.userId }
+        req.user = { userId: decodedToken.userId, username: decodedToken.username }
         return next();
     } catch (error) {
         console.log(error)

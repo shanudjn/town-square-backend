@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const { authenticationVerifier } = require('../middleware/authenticationVerifier');
-const { postTweet, getAllTweets, getUserTweets, likeTweet, dislikeTweet } = require('../controllers/tweet.controller');
+const { postTweet, getAllTweets, getUserTweets, upvoteTweet, removeUpvote, downvoteTweet, removeDownvote } = require('../controllers/tweet.controller');
 
-router.route('/tweets').get(getAllTweets)
+router.route('/tweets').get(authenticationVerifier, getAllTweets)
 router.route('/tweet').post(authenticationVerifier, postTweet)
 router.route('/profile/:username').get(authenticationVerifier, getUserTweets)
-router.route('/tweet/like/:tweetId').post(authenticationVerifier, likeTweet).delete(authenticationVerifier, dislikeTweet)
+router.route('/tweet/upvote/:tweetId').post(authenticationVerifier, upvoteTweet).delete(authenticationVerifier, removeUpvote)
+router.route('/tweet/downvote/:tweetId').post(authenticationVerifier, downvoteTweet).delete(authenticationVerifier, removeDownvote)
 
 
 module.exports = router
