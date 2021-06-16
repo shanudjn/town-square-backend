@@ -6,7 +6,7 @@ const { postTweet, getAllTweets, getUserTweets, upvoteTweet, removeUpvote, downv
 
 router.route('/tweets').get(authenticationVerifier, getAllTweets)
 router.route('/tweet').post(authenticationVerifier, postTweet)
-router.route('/profile/:username').get(authenticationVerifier, getUserTweets)
+router.route('/profile/tweets').get(authenticationVerifier, getUserTweets)
 router.route('/tweet/upvote/:tweetId').post(authenticationVerifier, upvoteTweet).delete(authenticationVerifier, removeUpvote)
 router.route('/tweet/downvote/:tweetId').post(authenticationVerifier, downvoteTweet).delete(authenticationVerifier, removeDownvote)
 

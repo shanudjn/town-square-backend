@@ -49,5 +49,15 @@ const follow = async (req, res) => {
 
 
 }
+const getUserProfile = async (req, res) => {
+    try {
+        const { userId } = req.user
+        const userProfile = await User.findById(userId);
+        res.status(200).json({ userProfile })
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ error: error.stack })
+    }
+}
 
-module.exports = { signup, login, follow }
+module.exports = { signup, login, getUserProfile }
